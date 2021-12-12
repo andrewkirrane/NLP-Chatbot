@@ -1,42 +1,26 @@
+# Import libraries
 import numpy as np
 import nltk
-from nltk.stem.porter import PorterStemmer
+from nltk.stem import SnowballStemmer
 
-stemmer = PorterStemmer()
+# Initialize stemmer variable with Snowball algorithm
+stemmer = SnowballStemmer('english')
 
+# Splits sentence into numpy array of strings
 def tokenize(sentence):
-    """
-    split sentence into array of words/tokens
-    a token can be a word or punctuation character, or number
-    """
     return nltk.word_tokenize(sentence)
 
-
+# Stems words in numpy array with Porter2 (Snowball) algorithm; Root word from original word
 def stem(word):
-    """
-    stemming = find the root form of the word
-    examples:
-    words = ["organize", "organizes", "organizing"]
-    words = [stem(w) for w in words]
-    -> ["organ", "organ", "organ"]
-    """
-    return stemmer.stem(word.lower())
+    return stemmer.stem(word.lower()) # Lowercase input word
 
-
+# Generates array of 0s and 1s based off of tokenized words that occur in saved data
 def bag_of_words(tokenized_sentence, words):
-    """
-    return bag of words array:
-    1 for each known word that exists in the sentence, 0 otherwise
-    example:
-    sentence = ["hello", "how", "are", "you"]
-    words = ["hi", "hello", "I", "you", "bye", "thank", "cool"]
-    bog   = [  0 ,    1 ,    0 ,   1 ,    0 ,    0 ,      0]
-    """
-    # stem each word
-    sentence_words = [stem(word) for word in tokenized_sentence]
-    # initialize bag with 0 for each word
-    bag = np.zeros(len(words), dtype=np.float32)
+    sentence_words = [stem(word) for word in tokenized_sentence] # stem each word in tokenized sentence
+    bag = np.zeros(len(words), dtype=np.float32) # Initialize bag with 0s for each word
+    # For word in words
     for idx, w in enumerate(words):
+        # If word in stemmed tokenized sentence, change array to 1 at index of word
         if w in sentence_words: 
             bag[idx] = 1
 
