@@ -8,10 +8,11 @@
           "How are you",
           "Is anyone there?",
           "Hello",
-          "Good day"
+          "Good day",
+          "What's up?"
         ],
         "responses": [
-          "Hey :-)",
+          "Hey ;)",
           "Hello, thanks for visiting",
           "Hi there, what can I do for you?",
           "Hi there, how can I help?"
@@ -19,7 +20,11 @@
       },
       {
         "tag": "goodbye",
-        "patterns": ["Bye", "See you later", "Goodbye"],
+        "patterns": [
+          "Bye", 
+          "See you later", 
+          "Goodbye"
+        ],
         "responses": [
           "See you later, thanks for visiting",
           "Have a nice day",
@@ -28,45 +33,31 @@
       },
       {
         "tag": "thanks",
-        "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
-        "responses": ["Happy to help!", "Any time!", "My pleasure"]
-      },
-      {
-        "tag": "items",
         "patterns": [
-          "Which items do you have?",
-          "What kinds of items are there?",
-          "What do you sell?"
-        ],
+          "Thanks", 
+          "Thank you", 
+          "That's helpful", 
+          "Thank's a lot!"],
         "responses": [
-          "We sell coffee and tea",
-          "We have coffee and tea"
+          "Happy to help!", 
+          "Any time!", 
+          "My pleasure"
         ]
       },
       {
-        "tag": "payments",
+        "tag": "aggresion",
         "patterns": [
-          "Do you take credit cards?",
-          "Do you accept Mastercard?",
-          "Can I pay with Paypal?",
-          "Are you cash only?"
+          "You are not human!",
+          "I hate you",
+          "I do not like you",
+          "You are not my friend",
+          "Siri is a way better bot than you"
         ],
         "responses": [
-          "We accept VISA, Mastercard and Paypal",
-          "We accept most major credit cards, and Paypal"
-        ]
-      },
-      {
-        "tag": "delivery",
-        "patterns": [
-          "How long does delivery take?",
-          "How long does shipping take?",
-          "When do I get my delivery?"
-        ],
-        "responses": [
-          "Delivery takes 2-4 days",
-          "Shipping takes 2-4 days"
-        ]
+          "Computers have feelings too... :(",
+          "I can always trace your IP address",
+          "You have no friends"
+        ] 
       },
       {
         "tag": "funny",
@@ -80,6 +71,81 @@
           "What did the buffalo say when his son left for college? Bison.",
           "What do you call a pig that does karate? A pork-CHOP.",
           "Why did the golfer bring two pairs of pants? In case he got a hole-in-one."
+        ]
+      },
+      {
+        "tag": "nice",
+        "patterns": [
+          "You are my favorite bot!",
+          "Thanks for always being there to talk",
+          "You are my best friend",
+          "I like you"
+        ],
+        "responses": [
+          "You are my favorite human",
+          "I'm glad we are friends!",
+          "I know you can't se my face, but I'm smiling!",
+          "Thanks for keeping me company!"
+        ]
+      },
+      {
+        "tag": "confident",
+        "patterns": [
+          "I am the smartest in my class",
+          "I succeed at everything I do",
+          "I am the best python coder",
+          "I am going to get an A on this project"
+        ],
+        "responses": [
+          "You are so cool!",
+          "I am so proud!",
+          "I knew it!",
+          "You are amazing!"
+        ]
+      },
+      {
+        "tag": "panic",
+        "patterns": [
+          "I think I am going to fail my class!",
+          "The sky is falling!",
+          "I do not know what to do",
+          "I lost my job!",
+          "Help I am lost!"
+        ],
+        "responses": [
+          "Every little thing is gonna be alright!",
+          "You will be fine!",
+          "Don't worry!",
+          "You have my support"
+        ]
+      },
+      {
+        "tag": "Fact",
+        "patterns": [
+          "Tell me a fact",
+          "Teach me somthing",
+          "What do you know"
+        ],
+        "responses": [
+          "USD was founded in 1949",
+          "There are 7 planets in our solar system.",
+          "2 + 2 = 4 ",
+          "A (4x4) matrix times a (4x5) matrix is a (4x5) matrix"
+        ]
+      },
+      {
+        "tag": "Risky",
+        "patterns": [
+          "Should I bet on tonight's game?",
+          "Should I go to the casino?",
+          "Should I buy more lottery tickets?"
+        ],
+        "responses": [
+          "Do whatever your heart desires!",
+          "Do what you feel is best!",
+          "No",
+          "Yes",
+          "No defintely not!"
         ]
       }
     ]
