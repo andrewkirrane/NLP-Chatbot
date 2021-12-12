@@ -1,11 +1,10 @@
 import json
 from nltk_util import tokenize, stem, bag_of_words
+from nltk.corpus import stopwords
 import numpy as np
-
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-
 from model import NeuralNetwork
 
 with open('data.json', 'r') as f:
@@ -24,7 +23,7 @@ for data in data['data']:
         pattern_tags.append((w, tag))
 
 ignore_punct = ['?', '!', '.', ':', ';', ',']
-all_words = [stem(w) for w in all_words if w in all_words if w not in ignore_punct]
+all_words = [stem(w) for w in all_words if w in all_words if w not in ignore_punct or stopwords.words('english')]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
@@ -57,7 +56,7 @@ hidden_size = 8
 output_size = len(tags)
 input_size = len(all_words)
 learning_rate = 0.001
-num_epochs = 1600
+num_epochs = 2000
 
 dataset = ChatDataset()
 train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers = 0)
