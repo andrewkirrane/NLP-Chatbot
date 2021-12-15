@@ -9,11 +9,16 @@
           "Is anyone there?",
           "Hello",
           "Good day",
-          "What's up?"
+          "What's up?",
+          "Nice to see you",
+          "It's been a while",
+          "Pleased to meet you",
+          "How do you do?",
+          "Howdy"
         ],
         "responses": [
           "Hey ;)",
-          "Hello, thanks for visiting",
+          "Hello, thanks for stopping by",
           "Hi there, what can I do for you?",
           "Hi there, how can I help?"
         ]
@@ -23,7 +28,10 @@
         "patterns": [
           "Bye", 
           "See you later", 
-          "Goodbye"
+          "Goodbye",
+          "Take it easy",
+          "I'm off",
+          "Have a nice day"
         ],
         "responses": [
           "See you later, thanks for visiting",
@@ -37,7 +45,9 @@
           "Thanks", 
           "Thank you", 
           "That's helpful", 
-          "Thank's a lot!"],
+          "Thank's a lot!",
+          "Thanks for talking to me"
+        ],
         "responses": [
           "Happy to help!", 
           "Any time!", 
@@ -51,7 +61,9 @@
           "I hate you",
           "I do not like you",
           "You are not my friend",
-          "Siri is a way better bot than you"
+          "Siri is a way better bot than you",
+          "I am mad at you",
+          "You upset me"
         ],
         "responses": [
           "Computers have feelings too... :(",
@@ -64,13 +76,19 @@
         "patterns": [
           "Tell me a joke!",
           "Tell me something funny!",
-          "Do you know a joke?"
+          "Do you know a joke?",
+          "Are you funny?"
         ],
         "responses": [
-          "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
-          "What did the buffalo say when his son left for college? Bison.",
+          "I wanted to buy some camo pants but I couldn't find any.",
+          "Most people are shocked when they find out how bad I am as an electrician.",
           "What do you call a pig that does karate? A pork-CHOP.",
-          "Why did the golfer bring two pairs of pants? In case he got a hole-in-one."
+          "Why did the golfer bring two pairs of pants? In case he got a hole-in-one.",
+          "Two fish are in a tank. One says, 'How do you drive this thing?'",
+          "The future, the present, and the past walk into a bar. Things got a little tense.",
+          "If a parsley farmer gets sued, can they garnish his wages?",
+          "People who take care of chickens are literally chicken tenders.",
+          "Two wifi engineers got married. The reception was fantastic."
         ]
       },
       {
@@ -91,10 +109,10 @@
       {
         "tag": "confident",
         "patterns": [
-          "I am the smartest in my class",
-          "I succeed at everything I do",
-          "I am the best python coder",
-          "I am going to get an A on this project"
+          "I am the smartest",
+          "I succeed at everything",
+          "I am the best coder",
+          "I am going to get to do so well on this project!"
         ],
         "responses": [
           "You are so cool!",
@@ -142,7 +160,6 @@
         ],
         "responses": [
           "Do whatever your heart desires!",
-          "Do what you feel is best!",
           "No",
           "Yes",
           "No defintely not!"

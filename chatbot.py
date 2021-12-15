@@ -3,7 +3,7 @@ import random
 import json
 import torch
 from model import NeuralNetwork
-from nltk_util import tokenize, bag_of_words
+from nltk_funcs import tokenize, bag_of_words
 
 # Open data file, save data to dictionary
 with open('data.json', 'r') as f:

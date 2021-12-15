@@ -1,6 +1,6 @@
 # Import modules and libraries
 import json
-from nltk_util import tokenize, stem, bag_of_words
+from nltk_funcs import tokenize, stem, bag_of_words
 from nltk.corpus import stopwords
 import numpy as np
 import torch
@@ -25,7 +25,7 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 # Open JSON file containing data, read through, and save data to dictionary
-with open('data.json', 'r') as f:
+with open('intents.json', 'r') as f:
     data = json.load(f)
 
 # Initialize variables for tags and sentence data
@@ -34,7 +34,7 @@ tags = []
 pattern_tags = []
 
 # For line of tag block in the data list
-for data_line in data['data']:
+for data_line in data['intents']:
     tag = data_line['tag'] # save tag
     tags.append(tag)
     # For each sentence in the tag block
@@ -48,6 +48,7 @@ all_words = [stem(w) for w in all_words if w in all_words if w not in ignore_pun
 # Create a distinct sorted set of words and tags
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
+print(len(all_words))
 
 # Create input and output vectors
 x_train = []
@@ -56,7 +57,7 @@ y_train = []
 # For sentence and tag in list of tuples
 for (pattern_sentence, tag) in pattern_tags:
     bag = bag_of_words(pattern_sentence, all_words) # Create bag of words based off of sentence
-    x_train.append(bag) # Append bag of words to input vector 
+    x_train.append(bag) # Append bag of words to input vector
     label = tags.index(tag) # Find index value of tag
     y_train.append(label) # Append index value of tag to output vector
 
@@ -65,23 +66,23 @@ x_train = np.array(x_train)
 y_train = np.array(y_train)
 
 # Initialize super parameters
-batch_size = 10
+batch_size = 3
 hidden_size = 10
 output_size = len(tags)
 input_size = len(all_words)
 learning_rate = 0.001
-num_epochs = 2000
+num_epochs = 1800
 
 # Create dataset for chatbot
 dataset = ChatDataset()
 # List of tuples containing data for chatbot
-train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True, num_workers = 0)
+train_loader = DataLoader(dataset = dataset, batch_size = batch_size, shuffle = True)
 
 # Initialize Neural Network model from class for feedforward training
 model = NeuralNetwork(input_size, hidden_size, output_size)
 
-# Initialize variable for Cross Entropy Loss function to be used for error calculations
-criterion = nn.CrossEntropyLoss()
+# Initialize variable for Cross Entropy Loss and Softmax functions to be used for error calculations
+cross_entropy = nn.CrossEntropyLoss()
 # Set up process for updating weights/gradient
 optimizer = torch.optim.Adam(model.parameters(),learning_rate)
 
@@ -90,16 +91,16 @@ for epoch in range(num_epochs):
     # For each training pair
     for (words, labels) in train_loader:
         outputs = model(words) # Feedforward output (y_predicted)
-        loss = criterion(outputs, labels) # Calculate cross entropy loss ((y_predicted - y)**2).mean(), where y_predicted is the expected output and y is actual output, and softmax of output
+        loss = cross_entropy(outputs, labels) # Calculate cross entropy loss ((y_predicted - y)**2).mean(), where y_predicted is the expected output and y is actual output, and softmax of output
         optimizer.zero_grad() # Clears gradient for this iteration
         loss.backward() # Calculates gradient using chain rule
-        optimizer.step() # Updates weights based on back propogation, ready for next epoch
+        optimizer.step() # Updates weights based on back propagation, ready for next epoch
     
     # Prints out current Cross Entropy Loss every 100 epochs for user
     if (epoch + 1) % 100 == 0:
-        print(f'epoch {epoch+1}/{num_epochs}, loss = {loss.item():.4f}')
+        print(f'epoch {epoch+1}/{num_epochs}, loss = {loss.item():.10f}')
 
-print(f'Final loss, loss = {loss.item():.4f}')
+print(f'Final loss, loss = {loss.item():.10f}')
 
 # Initialize data dictionary to save for running chatbot application
 data = {
