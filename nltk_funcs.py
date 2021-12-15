@@ -25,12 +25,3 @@ def bag_of_words(tokenized_sentence, words):
             bag[idx] = 1
 
     return bag
-
-    """
-    return bag of words array:
-    1 for each known word that exists in the sentence, 0 otherwise
-    example:
-    sentence = ["hello", "how", "are", "you"]
-    words = ["hi", "hello", "I", "you", "bye", "thank", "cool"]
-    bag   = [ 0,      1,     0,    1,     0,      0,       0]
-    """
