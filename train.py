@@ -25,7 +25,7 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 # Open JSON file containing data, read through, and save data to dictionary
-with open('intents.json', 'r') as f:
+with open('data.json', 'r') as f:
     data = json.load(f)
 
 # Initialize variables for tags and sentence data
@@ -34,7 +34,7 @@ tags = []
 pattern_tags = []
 
 # For line of tag block in the data list
-for data_line in data['intents']:
+for data_line in data['data']:
     tag = data_line['tag'] # save tag
     tags.append(tag)
     # For each sentence in the tag block
@@ -48,7 +48,6 @@ all_words = [stem(w) for w in all_words if w in all_words if w not in ignore_pun
 # Create a distinct sorted set of words and tags
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
-print(len(all_words))
 
 # Create input and output vectors
 x_train = []
